@@ -1,0 +1,25 @@
+name: WordPress DevOps CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Validate project files
+        run: |
+          echo "Checking project structure..."
+          test -f docker-compose.yml
+          test -f docker/upload.ini
+          test -f .gitignore
+          echo "All required files are present!"
