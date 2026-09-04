@@ -18,8 +18,9 @@ jobs:
 
       - name: Validate project files
         run: |
-          echo "Checking project structure..."
           test -f docker-compose.yml
           test -f docker/upload.ini
           test -f .gitignore
-          echo "All required files are present!"
+
+      - name: Validate Docker Compose
+        run: docker compose config
