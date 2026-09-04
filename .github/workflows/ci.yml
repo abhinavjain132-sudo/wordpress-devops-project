@@ -21,6 +21,8 @@ jobs:
           test -f docker-compose.yml
           test -f docker/upload.ini
           test -f .gitignore
-
       - name: Validate Docker Compose
         run: docker compose config
+
+      - name: Build Docker image
+        run: docker build -t wordpress-devops:latest .
